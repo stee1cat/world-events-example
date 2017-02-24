@@ -1,0 +1,25 @@
+{
+  "name": "world-events",
+  "version": "1.0.0",
+  "description": "Клиент-серверное приложение, отображающее на карте мира события генерируемые случайным образом.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stee1cat/world-events.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Gennadiy Khatuntsev <e.steelcat@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stee1cat/world-events/issues"
+  },
+  "homepage": "https://github.com/stee1cat/world-events#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
