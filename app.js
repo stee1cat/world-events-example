@@ -8,8 +8,17 @@ let express = require('express');
 
 let app = express();
 
+app.set('views', './views');
+app.set('view engine', 'pug');
+
+app.use(express.static('public'));
+
 app.get('/', function (request, response) {
-    response.send('Hello World!');
+    response.render('index', {
+        title: 'Main Page'
+    });
 });
 
-app.listen(config.port);
+app.listen(config.port, function () {
+    console.log('Server started: http://localhost:' + config.port + '/');
+});
