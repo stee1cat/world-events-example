@@ -14,7 +14,11 @@ export default class Map extends React.Component {
     initMap() {
         const ctx = this.refs.canvas.getContext('2d');
 
-        this.map = new WorldMap(ctx);
+        this.map = new WorldMap(ctx)
+    }
+
+    componentWillUpdate(props) {
+        this.map.setEvents(props.events);
     }
 
     render() {

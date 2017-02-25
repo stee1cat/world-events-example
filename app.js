@@ -5,8 +5,11 @@
 const config = require('./config');
 
 let express = require('express');
+let expressWs = require('express-ws');
 
-let app = express();
+expressWs = expressWs(express());
+
+let app = expressWs.app;
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -15,8 +18,12 @@ app.use(express.static('public'));
 
 app.get('/', function (request, response) {
     response.render('index', {
-        title: 'Main Page'
+        title: 'World Map'
     });
+});
+
+app.ws('/events', function (websocket, request) {
+
 });
 
 app.listen(config.port, function () {

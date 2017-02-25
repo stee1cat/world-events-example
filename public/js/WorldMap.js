@@ -6,8 +6,9 @@ import Animation from './Animation';
 
 export default class WorldMap {
 
-    constructor(ctx) {
+    constructor(ctx, events) {
         this.ctx = ctx;
+        this.events = [];
 
         this.init();
         this.loadSvg();
@@ -42,6 +43,10 @@ export default class WorldMap {
         this.drawMap();
     }
 
+    setEvents(events) {
+        this.events = events;
+    }
+
     calculateMapSize() {
         return {
             width: this.ctx.canvas.width,
@@ -54,7 +59,7 @@ export default class WorldMap {
     }
 
     static get limitFps() {
-        return 24;
+        return 2;
     }
 
 }

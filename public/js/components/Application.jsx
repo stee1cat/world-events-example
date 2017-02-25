@@ -4,15 +4,27 @@
 
 import React from 'react';
 import Map from './Map';
+import {connect} from 'react-redux';
 
-export default class Application extends React.Component {
+class Application extends React.Component {
 
     render() {
+        const {events} = this.props;
+
         return (
             <div className="container">
-                <Map />
+                <Map events={events} />
             </div>
         );
     }
 
 }
+
+export default connect(
+    state => ({
+        events: state.events
+    }),
+    dispatch => ({
+
+    })
+) (Application);
