@@ -3,6 +3,7 @@
  */
 
 const config = require('./config');
+const EventService = require('./libs/EventService');
 
 let express = require('express');
 let expressWs = require('express-ws');
@@ -23,7 +24,15 @@ app.get('/', function (request, response) {
 });
 
 app.ws('/events', function (websocket, request) {
+    let eventService = new EventService(websocket);
 
+    eventService.start();
+    console.log('client connected');
+
+    websocket.on('close', () => {
+        eventService.stop();
+        console.log('client disconnected');
+    });
 });
 
 app.listen(config.port, function () {
