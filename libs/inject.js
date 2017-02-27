@@ -8,6 +8,9 @@ var MAX_ITERATION = 15;
 var weights = [];
 var paths = document.querySelectorAll('.land path, path.land');
 
+var svg = document.querySelector('svg');
+var viewBox = svg.getAttribute('viewBox').split(/\s+|,/);
+
 var Util = {
     randInt: function (min, max) {
         return Math.floor(Math.floor(Math.random() * (max - min + 1)) + min);
@@ -80,10 +83,11 @@ var findPoint = function () {
             x = Util.randInt(box.x, box.x + box.width);
             y = Util.randInt(box.y, box.y + box.height);
 
-            if (document.elementFromPoint(x, y)) {
+            path = document.elementFromPoint(x, y);
+            if (path && path.getAttribute('class') != 'ocean' && y < parseInt(viewBox[3])) {
                 result = {
-                    x: x + 30,
-                    y: y - 61
+                    x: x,
+                    y: y
                 };
             }
         }
